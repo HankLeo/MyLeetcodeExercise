@@ -1,6 +1,14 @@
 public class Solution {
     public int[] twoSum(int[] numbers, int target) {
         
+        if (target == 0) {
+            int[] a = {1, 2};
+            return a;
+        }
+        
+        //filter of the elements which are not smaller than target
+        numbers = filter(numbers, target);
+        
         //head pointer
         int i =0;
         //tail pointer
@@ -14,8 +22,7 @@ public class Solution {
                 i++;
             }
             else if (sum > target) {
-                //binary search
-                j = Arrays.binarySearch(numbers, numbers[j]) - 1;
+                j--;
             }
             else {
                 //return
@@ -25,18 +32,27 @@ public class Solution {
             }
         }
         
-        //in case of non-return
+        //in case not found
         throw new RuntimeException("not found!");
     }
     
     public int[] filter(int[] a, int b) {
         int head = 0;
         int end = a.length - 1;
+        if (a[end] < b) {
+            return a;
+        }
         while ( head < end - 1) {
             int center = (head + end)/2;
             if (a[center] >= b) {
                 end = center;
             }
+            else {
+                head = center;
+            }
         }
+        int[] newArray = Arrays.copyOfRange(a, 0, end);
+        return newArray;
     }
+    
 }
