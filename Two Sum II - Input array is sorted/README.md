@@ -1,4 +1,4 @@
-## Two Sum
+## Two Sum II - Input array is sorted
 
 ### Description
 
@@ -11,7 +11,6 @@ where index1 must be less than index2.
 Please note that your returned answers (both index1 and index2) are not zero-based.
 
 You may assume that each input would have exactly one solution.
-
 ```
 
 ### Example
